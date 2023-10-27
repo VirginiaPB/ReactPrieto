@@ -5,8 +5,8 @@ import ItemListContainer from './components/ItemListContainer';
 function App() {
   return (
     <div className="App">
-      <NavBar /> {/* Agrega NavBar */}
-      <ItemListContainer greeting="Bienvenido a Zapateria Hers" /> {/* Agrega ItemListContainer con la prop greeting */}
+      <NavBar /> {}
+      <ItemListContainer greeting="Bienvenido a Zapateria Hers" /> {}
 
     </div>
   );
