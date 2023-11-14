@@ -1,34 +1,34 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
-import '../App.css';
 
 function NavBar() {
   return (
     <header>
       <div className="logo">
-        <span className="navbar-brand">ZAPATERIA HERS</span>
+        <Link to="/" className="navbar-brand">ZAPATERIA HERS</Link>
       </div>
-      <div className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item active">
-              <span className="nav-link">Sandalias</span>
+            <li className="nav-item">
+              <Link to="/category/sandalias" className="nav-link">Sandalias</Link>
             </li>
             <li className="nav-item">
-              <span className="nav-link">Botas</span>
+              <Link to="/category/botas" className="nav-link">Botas</Link>
             </li>
             <li className="nav-item">
-              <span className="nav-link">Zapatillas</span>
+              <Link to="/category/zapatillas" className="nav-link">Zapatillas</Link>
             </li>
           </ul>
         </div>
         <div className="actions">
           <CartWidget />
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
