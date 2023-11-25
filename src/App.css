@@ -12,7 +12,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background-color: #fff;
+  background-color: #000; /* Negro */
+  color: #fff; /* Blanco */
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -41,3 +42,9 @@ header .actions {
   align-items: center;
   gap: 20px;
 }
+
+
+header .navbar-brand, header .nav-link {
+  color: #fff; 
+}
+
