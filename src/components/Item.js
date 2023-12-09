@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../context/CartContext'; 
 
-const ItemDetail = ({ item }) => {
-  if (!item) {
-    return <p>Producto no seleccionado</p>;
-  }
+const Item = ({ item }) => {
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    addToCart(item, 1); 
+  };
 
   return (
-    <div>
-      <h2>{item.title}</h2>
+    <div className="item">
+      <img src={item.pictureUrl} alt={item.title} />
+      <h3>{item.title}</h3>
       <p>{item.description}</p>
-      <p>Precio: ${item.price}</p>
-      <img src={item.pictureUrl} alt={item.title} style={{ maxWidth: '300px' }} />
+      <p>${item.price}</p>
+      <button onClick={handleAddToCart}>Añadir al Carrito</button>
     </div>
   );
 };
 
-export default ItemDetail;
+export default Item;

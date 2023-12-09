@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { products } from '../data/products';
-import ItemDetail from './ItemDetail'; 
+import ItemDetail from './ItemDetail';
+import { db } from '../firebase-config';
 
 const ItemDetailContainer = () => {
-  const [item, setItem] = useState(null); 
+  const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const { itemId } = useParams();
 
   useEffect(() => {
-    const fetchItem = async () => {
-      const fetchedItem = products.find(product => product.id.toString() === itemId);
-      setItem(fetchedItem);
-      setLoading(false);
-    };
+    const productCollection = db.collection('Productos');
+    const currentProduct = productCollection.doc(itemId);
 
-    fetchItem();
+    currentProduct.get().then((doc) => {
+      if (!doc.exists) {
+        console.log('El producto no existe!');
+        return;
+      }
+      setItem({ id: doc.id, ...doc.data() });
+      setLoading(false);
+    }).catch((error) => {
+      console.error("Error al buscar el producto: ", error);
+    });
   }, [itemId]);
 
   if (loading) {

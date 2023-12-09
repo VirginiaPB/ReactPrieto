@@ -1,38 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import { products } from '../data/products';
-import Item from './Item'; 
+import ItemList from './ItemList';
+import { db } from '../firebase-config';
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-  const { categoryId } = useParams();
-  const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (categoryId) {
-      const filteredProducts = products.filter(product => product.category === categoryId);
-      setItems(filteredProducts);
-    } else {
-      setItems([]);
-    }
-  }, [categoryId]);
+    const productCollection = db.collection('Productos');
 
-  if (location.pathname === '/') {
-    return <img src={`${process.env.PUBLIC_URL}/fotoPpial.jpeg`} alt="Imagen principal" />;
-  } else {
-    return (
-      <div>
-        <h2>{greeting}</h2>
-        {items.length > 0 ? (
-          items.map((item) => (
-            <Item key={item.id} item={item} /> 
-          ))
-        ) : (
-          <p>No hay productos en esta categoría.</p>
-        )}
-      </div>
-    );
+    productCollection.get().then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        console.log('No hay productos!');
+      }
+      setItems(querySnapshot.docs.map(doc => {
+        return { id: doc.id, ...doc.data() };
+      }));
+      setLoading(false);
+    }).catch((error) => {
+      console.error("Error al obtener los productos: ", error);
+    });
+  }, []);
+
+  if (loading) {
+    return <p>Cargando productos...</p>;
   }
+
+  return <ItemList items={items} />;
 };
 
 export default ItemListContainer;
