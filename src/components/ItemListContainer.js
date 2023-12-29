@@ -1,26 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from './ItemList';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase-config';
+import { useParams } from 'react-router-dom';
 
 const ItemListContainer = () => {
+  const { categoryId } = useParams();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const productCollection = db.collection('Productos');
+    const getProducts = async () => {
+      const productCollectionRef = collection(db, 'Productos');
+      try {
+        const data = await getDocs(productCollectionRef);
+        const products = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 
-    productCollection.get().then((querySnapshot) => {
-      if (querySnapshot.size === 0) {
-        console.log('No hay productos!');
+        // Filtrar productos por categoría
+        const filteredProducts = categoryId
+          ? products.filter((product) => product.category === categoryId)
+          : products;
+
+        console.log('Productos obtenidos:', filteredProducts);
+        setItems(filteredProducts);
+      } catch (error) {
+        console.error("Error al obtener los productos: ", error);
       }
-      setItems(querySnapshot.docs.map(doc => {
-        return { id: doc.id, ...doc.data() };
-      }));
       setLoading(false);
-    }).catch((error) => {
-      console.error("Error al obtener los productos: ", error);
-    });
-  }, []);
+    };
+
+    getProducts();
+  }, [categoryId]);
 
   if (loading) {
     return <p>Cargando productos...</p>;

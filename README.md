@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Zapatería Hers - Proyecto Final
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bienvenido a Zapatería Hers, un proyecto de e-commerce desarrollado con React JS. En esta aplicación, podrás explorar una variedad de productos, ver detalles, y realizar compras de manera fácil y segura.
 
-## Available Scripts
+## Cómo comenzar
 
-In the project directory, you can run:
+Este proyecto utiliza Create React App como base. Aquí tienes algunos scripts útiles:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ejecuta la aplicación en modo de desarrollo.\
+Abre [http://localhost:3000](http://localhost:3000) para verla en tu navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+La página se recargará automáticamente al realizar cambios.\
+Puedes ver errores de lint en la consola.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Inicia el corredor de pruebas en modo interactivo.\
+Consulta la sección sobre [ejecutar pruebas](https://facebook.github.io/create-react-app/docs/running-tests) para obtener más información.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Construye la aplicación para producción en la carpeta `build`.\
+Agrupa React de manera óptima y optimiza el rendimiento.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+El build está minificado y los nombres de archivo incluyen los hashes.\
+¡Tu aplicación está lista para ser desplegada!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Consulta la sección sobre [despliegue](https://facebook.github.io/create-react-app/docs/deployment) para obtener más información.
 
-### `npm run eject`
+## Estructura del Proyecto
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+La aplicación consta de diferentes componentes:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `NavBar`: Navegación principal de la aplicación.
+- `CartWidget`: Indicador de la cantidad de productos en el carrito.
+- `ItemListContainer`: Contenedor principal para mostrar productos.
+- `ItemDetailContainer`: Contenedor para detalles de productos.
+- `Cart`: Componente que muestra los productos en el carrito.
+- `Checkout`: Proceso de pago con información del cliente y confirmación de la orden.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Firebase
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+La aplicación utiliza Firebase para gestionar datos y órdenes. Se han implementado las colecciones `items` y `orders` para almacenar productos y órdenes respectivamente.
 
-## Learn More
+## Librerías Adicionales
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+En este proyecto, se han utilizado las siguientes librerías adicionales:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `react-router-dom`: Para la navegación entre diferentes vistas.
+- `firebase`: Para la integración con la base de datos Firebase.
 
-### Code Splitting
+## Desafíos y Decisiones de Diseño
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Este proyecto se ha centrado en cumplir con los requisitos del curso, proporcionando una experiencia de compra intuitiva y funcional. Se ha priorizado la usabilidad y la interactividad del usuario.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+¡Esperamos que disfrutes de tu experiencia de compra en Zapatería Hers!
